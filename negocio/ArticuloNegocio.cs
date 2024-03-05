@@ -11,7 +11,7 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar() 
+        public List<Articulo> listar()
         {
             List<Articulo> listaDeArticulos = new List<Articulo>();
             AccesoADatos accesoADatos = new AccesoADatos();
@@ -20,7 +20,7 @@ namespace negocio
             {
                 accesoADatos.asignarConsulta("select A.Id, codigo, nombre, A.Descripcion , M.Descripcion Marca, M.Id IdMarca, C.Descripcion Categoria, C.Id IdCategoria, ImagenUrl, Precio from ARTICULOS A join MARCAS M on A.IdMarca = M.Id join CATEGORIAS C on A.IdCategoria = C.Id");
                 accesoADatos.ejecutarLectura();
-                while(accesoADatos.Lector.Read()) 
+                while (accesoADatos.Lector.Read())
                 {
                     Articulo nuevoArticulo = new Articulo();
                     Marca marcaDelArticulo = new Marca();
@@ -45,16 +45,13 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-            finally 
+            finally
             {
                 accesoADatos.cerrarConexion();
             }
-
         }
-
 
     }
 }
