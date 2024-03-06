@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.flpArticuloBox = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flpArticuloBox
@@ -39,11 +40,22 @@
             this.flpArticuloBox.Size = new System.Drawing.Size(1166, 460);
             this.flpArticuloBox.TabIndex = 0;
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(1026, 507);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(152, 64);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar Artículo";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // frmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1210, 616);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.flpArticuloBox);
             this.Name = "frmCatalogo";
             this.ShowIcon = false;
@@ -56,6 +68,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flpArticuloBox;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
 

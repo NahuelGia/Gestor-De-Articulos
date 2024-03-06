@@ -16,6 +16,8 @@ namespace aplicacion
 {
     public partial class ArticuloBox : UserControl
     {
+        private Helper helper = new Helper();
+
         private Articulo articulo;
         
         public ArticuloBox()
@@ -27,55 +29,12 @@ namespace aplicacion
         {
             InitializeComponent();
             articulo = aCargar;
-            cargarUrlImagen();
+            helper.cargarImagen(pbArticulo, articulo.RutaImagen);
             lblNombre.Text = articulo.Nombre;
             lblMarca.Text = articulo.Marca.Descripcion;
+            lblPrecio.Text = articulo.Precio.ToString("N2");
         }
-
-        private void cargarUrlImagen()
-        {
-            using (WebClient webClient = new WebClient())
-            {
-                try
-                {
-                    byte[] imageData = webClient.DownloadData(articulo.UrlImagen);
-                    using (MemoryStream ms = new MemoryStream(imageData))
-                    {
-                        pbArticulo.Image = Image.FromStream(ms);
-                    }
-                }
-                catch (Exception)
-                {
-                    pbArticulo.Image = pbArticulo.ErrorImage;
-                }
-            }
-        }
-
-   
-
-        //public Image Imagen
-        //{
-        //    get{ return pbArticulo.Image; }
-        //    set { pbArticulo.Image = value;}
-        //}
-
-        //public string UrlImagen
-        //{
-        //    get { return pbArticulo.Text; }
-        //    set { pbArticulo.Text = value;}
-        //}
-        
-        public string nombre
-        {
-            get { return lblNombre.Text; }
-            set { lblNombre.Text = value; }
-        }
-
-        public void imagenDefault()
-        {
-            pbArticulo.Image = pbArticulo.ErrorImage;
-        }
-
+      
         private void btnMasDetalles_Click(object sender, EventArgs e)
         {
             frmInformacion formulario = new frmInformacion(articulo);

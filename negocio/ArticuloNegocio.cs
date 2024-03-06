@@ -36,7 +36,8 @@ namespace negocio
                     nuevoArticulo.Categoria = categoriaDelArticulo;
                     nuevoArticulo.Categoria.Id = (int)accesoADatos.Lector["IdCategoria"];
                     nuevoArticulo.Categoria.Descripcion = (string)accesoADatos.Lector["Categoria"];
-                    nuevoArticulo.UrlImagen = (string)accesoADatos.Lector["ImagenUrl"];
+                    string direccionImagenDB = (string)accesoADatos.Lector["ImagenUrl"];
+                    nuevoArticulo.cargarImagen(direccionImagenDB); 
                     nuevoArticulo.Precio = (decimal)accesoADatos.Lector["Precio"];
 
                     listaDeArticulos.Add(nuevoArticulo);

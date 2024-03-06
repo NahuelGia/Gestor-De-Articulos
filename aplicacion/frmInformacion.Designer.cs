@@ -41,6 +41,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtImagen = new System.Windows.Forms.TextBox();
+            this.lblUrlImg = new System.Windows.Forms.Label();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +120,7 @@
             // 
             // cbMarca
             // 
+            this.cbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMarca.FormattingEnabled = true;
             this.cbMarca.Location = new System.Drawing.Point(286, 77);
             this.cbMarca.Name = "cbMarca";
@@ -125,6 +129,7 @@
             // 
             // cbCategoria
             // 
+            this.cbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(286, 104);
             this.cbCategoria.Name = "cbCategoria";
@@ -153,14 +158,48 @@
             this.txtNombre.Location = new System.Drawing.Point(286, 28);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(176, 20);
             this.txtNombre.TabIndex = 13;
+            // 
+            // txtImagen
+            // 
+            this.txtImagen.Location = new System.Drawing.Point(317, 287);
+            this.txtImagen.Name = "txtImagen";
+            this.txtImagen.ReadOnly = true;
+            this.txtImagen.Size = new System.Drawing.Size(187, 20);
+            this.txtImagen.TabIndex = 14;
+            // 
+            // lblUrlImg
+            // 
+            this.lblUrlImg.AutoSize = true;
+            this.lblUrlImg.Location = new System.Drawing.Point(219, 290);
+            this.lblUrlImg.Name = "lblUrlImg";
+            this.lblUrlImg.Size = new System.Drawing.Size(92, 13);
+            this.lblUrlImg.TabIndex = 15;
+            this.lblUrlImg.Text = "Dirección imagen:";
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarImagen.Location = new System.Drawing.Point(510, 291);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(52, 20);
+            this.btnAgregarImagen.TabIndex = 16;
+            this.btnAgregarImagen.Text = "...";
+            this.btnAgregarImagen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Visible = false;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // frmInformacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 371);
+            this.Controls.Add(this.btnAgregarImagen);
+            this.Controls.Add(this.lblUrlImg);
+            this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtCodigo);
@@ -197,5 +236,8 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtImagen;
+        private System.Windows.Forms.Label lblUrlImg;
+        private System.Windows.Forms.Button btnAgregarImagen;
     }
 }
