@@ -36,7 +36,9 @@ namespace aplicacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            frmInformacion formularioAgregar = new frmInformacion();
+            
+            formularioAgregar.ShowDialog();
         }
     }
 }

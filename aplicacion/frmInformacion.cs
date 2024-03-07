@@ -19,12 +19,22 @@ namespace aplicacion
         public frmInformacion()
         {
             InitializeComponent();
+            btnAgregarImagen.Visible = true;
+            btnAgregar.Visible = true;
+            habilitarTxtbox();
 
+        }
+
+        private void habilitarTxtbox()
+        {
+            // hay que hacer q se habiliten todos los txt box.
         }
 
         public frmInformacion(Articulo articulo)
         {
             InitializeComponent();
+            btnEliminar.Visible = true;
+            btnModificar.Visible = true;
             cargar(articulo);
         }
 
@@ -62,7 +72,6 @@ namespace aplicacion
             }
 
         }
-
 
     }
 }

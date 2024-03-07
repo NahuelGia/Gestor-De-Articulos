@@ -32,7 +32,7 @@ namespace aplicacion
             helper.cargarImagen(pbArticulo, articulo.RutaImagen);
             lblNombre.Text = articulo.Nombre;
             lblMarca.Text = articulo.Marca.Descripcion;
-            lblPrecio.Text = articulo.Precio.ToString("N2");
+            lblPrecio.Text = "$" + articulo.Precio.ToString("N2");
         }
       
         private void btnMasDetalles_Click(object sender, EventArgs e)

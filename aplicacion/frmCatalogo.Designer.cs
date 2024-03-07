@@ -35,16 +35,18 @@
             // flpArticuloBox
             // 
             this.flpArticuloBox.AutoScroll = true;
-            this.flpArticuloBox.Location = new System.Drawing.Point(12, 41);
+            this.flpArticuloBox.BackColor = System.Drawing.Color.LightGray;
+            this.flpArticuloBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.flpArticuloBox.Location = new System.Drawing.Point(12, 53);
             this.flpArticuloBox.Name = "flpArticuloBox";
-            this.flpArticuloBox.Size = new System.Drawing.Size(1166, 460);
+            this.flpArticuloBox.Size = new System.Drawing.Size(1170, 337);
             this.flpArticuloBox.TabIndex = 0;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(1026, 507);
+            this.btnAgregar.Location = new System.Drawing.Point(780, 408);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(152, 64);
+            this.btnAgregar.Size = new System.Drawing.Size(111, 39);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar Artículo";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -54,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1210, 616);
+            this.ClientSize = new System.Drawing.Size(1195, 459);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.flpArticuloBox);
             this.Name = "frmCatalogo";
