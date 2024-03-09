@@ -43,7 +43,7 @@ namespace dominio
                 }
                 articulo.RutaImagen = rutaCompleta;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 articulo.RutaImagen = null;
             }
@@ -52,13 +52,13 @@ namespace dominio
 
         public void cargarImagen(PictureBox picturebox, string rutaImagen)
         {
-            if (rutaImagen == null)
+            try
             {
-                picturebox.Image = picturebox.ErrorImage;
+                   picturebox.Load(rutaImagen);
             }
-            else
+            catch (Exception)
             {
-                picturebox.Load(rutaImagen);
+                   picturebox.Image = picturebox.ErrorImage;
             }
         }
 

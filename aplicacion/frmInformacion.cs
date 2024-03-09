@@ -16,29 +16,59 @@ namespace aplicacion
     {
         private Helper helper = new Helper();
 
+        private Articulo articuloAModificar = null;
+
+        private ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+
         public frmInformacion()
         {
             InitializeComponent();
             btnAgregarImagen.Visible = true;
             btnAgregar.Visible = true;
             habilitarTxtbox();
-
+            cargarCb();
         }
 
         private void habilitarTxtbox()
         {
-            // hay que hacer q se habiliten todos los txt box.
+            txtNombre.ReadOnly = false;
+            txtPrecio.ReadOnly = false;
+            txtCodigo.ReadOnly = false;
+            txtDescripcion.ReadOnly = false;
+            txtImagen.ReadOnly = false;
         }
+
+        private void deshabilitarTxtbox()
+        {
+            txtNombre.ReadOnly = true;
+            txtPrecio.ReadOnly = true;
+            txtCodigo.ReadOnly = true;
+            txtDescripcion.ReadOnly = true;
+            txtImagen.ReadOnly = true;
+        }
+
+        private void cargarCb()
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();  
+            cbCategoria.DataSource = categoriaNegocio.listar();
+
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            cbMarca.DataSource = marcaNegocio.listar();
+        }
+
 
         public frmInformacion(Articulo articulo)
         {
             InitializeComponent();
             btnEliminar.Visible = true;
-            btnModificar.Visible = true;
-            cargar(articulo);
+            btnAgregar.Visible = true;
+            btnEditar.Visible = true;
+            btnAgregar.Text = "Aceptar";
+            cargarParaModificar(articulo);
+            articuloAModificar = articulo;
         }
 
-        private void cargar(Articulo articulo)
+        private void cargarParaModificar(Articulo articulo)
         {
             txtNombre.Text = articulo.Nombre;
             txtPrecio.Text = articulo.Precio.ToString("N2");
@@ -47,17 +77,13 @@ namespace aplicacion
             helper.cargarImagen(pbArticulo, articulo.RutaImagen);
             txtImagen.Text = articulo.RutaImagen;
 
+            cbCategoria.DataSource = null;
+            cbMarca.DataSource = null;
+ 
             cbCategoria.Items.Add(articulo.Categoria);
             cbCategoria.SelectedIndex = 0;
             cbMarca.Items.Add(articulo.Marca);
             cbMarca.SelectedIndex = 0;
-
-            //CategoriaNegocio categoriaNegocio = new CategoriaNegocio();  
-            //cbCategoria.DataSource = categoriaNegocio.listar();
-
-            //MarcaNegocio marcaNegocio = new MarcaNegocio();
-            //cbMarca.DataSource = marcaNegocio.listar();
-
         }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
@@ -73,5 +99,52 @@ namespace aplicacion
 
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if(articuloAModificar == null)
+            {
+                articuloAModificar = new Articulo();
+            }
+
+            articuloAModificar.Nombre = txtNombre.Text;
+            articuloAModificar.Precio = Convert.ToDecimal(txtPrecio.Text);
+            articuloAModificar.Categoria = (Categoria)cbCategoria.SelectedItem;
+            articuloAModificar.Marca = (Marca)cbMarca.SelectedItem;
+            articuloAModificar.Descripcion = txtDescripcion.Text;
+            articuloAModificar.Codigo = txtCodigo.Text;
+            articuloAModificar.RutaImagen = txtImagen.Text;
+
+            if(articuloAModificar.Id != 0)
+            {
+                articuloNegocio.modificar(articuloAModificar);
+                MessageBox.Show("Se modificó exitosamente");
+            }
+            else
+            {
+                articuloNegocio.agregar(articuloAModificar);
+                MessageBox.Show("Se agregó exitosamente");
+            }
+            Close();
+
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            if(txtNombre.ReadOnly)
+            {
+                habilitarTxtbox();
+                cargarCb();
+                //falta hacer que cuando le des a editar en los combo box se carge lo del artituclo actual
+                btnEditar.BackgroundImage = Properties.Resources._4;
+                btnAgregarImagen.Visible = true;
+            }
+            else
+            {
+                cargarParaModificar(articuloAModificar);
+                deshabilitarTxtbox();
+                btnEditar.BackgroundImage = Properties.Resources.imgEditar2;
+                btnAgregarImagen.Visible = false;
+            }
+        }
     }
 }

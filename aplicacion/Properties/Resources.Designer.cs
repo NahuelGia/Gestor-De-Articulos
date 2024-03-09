@@ -73,6 +73,16 @@ namespace aplicacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4 {
+            get {
+                object obj = ResourceManager.GetObject("4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder_Custom {
             get {
                 object obj = ResourceManager.GetObject("folder_Custom", resourceCulture);
@@ -83,19 +93,9 @@ namespace aplicacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Bitmap imgEditar2 {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap preview {
-            get {
-                object obj = ResourceManager.GetObject("preview", resourceCulture);
+                object obj = ResourceManager.GetObject("imgEditar2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

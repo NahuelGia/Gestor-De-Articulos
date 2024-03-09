@@ -11,10 +11,11 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
+
+        private AccesoADatos accesoADatos = new AccesoADatos();
         public List<Articulo> listar()
         {
             List<Articulo> listaDeArticulos = new List<Articulo>();
-            AccesoADatos accesoADatos = new AccesoADatos();
 
             try
             {
@@ -46,6 +47,64 @@ namespace negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                accesoADatos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Articulo articuloAgregar)
+        {
+            try
+            {
+                accesoADatos.asignarConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria,ImagenUrl, Precio) VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @imagenUrl, @precio);");
+                
+                accesoADatos.setearParametro("@codigo", articuloAgregar.Codigo);
+                accesoADatos.setearParametro("@nombre", articuloAgregar.Nombre);
+                accesoADatos.setearParametro("@descripcion", articuloAgregar.Descripcion);
+                accesoADatos.setearParametro("@idMarca", articuloAgregar.Marca.Id);
+                accesoADatos.setearParametro("@idCategoria", articuloAgregar.Categoria.Id);
+                accesoADatos.setearParametro("@imagenUrl", articuloAgregar.RutaImagen);
+                accesoADatos.setearParametro("@precio", articuloAgregar.Precio);
+
+                accesoADatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                accesoADatos.cerrarConexion();
+            }
+
+        }
+
+        public void modificar(Articulo articuloModificar)
+        {
+            try
+            {
+                accesoADatos.asignarConsulta("update Articulos set codigo = @codigo, nombre = @nombre, descripcion = @descripcion, idMarca = @idMarca, idCategoria = @idCategoria, imagenUrl = @imagenUrl, precio = @precio where id = @id");
+
+                accesoADatos.setearParametro("@codigo", articuloModificar.Codigo);
+                accesoADatos.setearParametro("@nombre", articuloModificar.Nombre);
+                accesoADatos.setearParametro("@descripcion", articuloModificar.Descripcion);
+                accesoADatos.setearParametro("@idMarca", articuloModificar.Marca.Id);
+                accesoADatos.setearParametro("@idCategoria", articuloModificar.Categoria.Id);
+                accesoADatos.setearParametro("@imagenUrl", articuloModificar.RutaImagen);
+                accesoADatos.setearParametro("@precio", articuloModificar.Precio);
+                accesoADatos.setearParametro("@id", articuloModificar.Id);
+
+                accesoADatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
